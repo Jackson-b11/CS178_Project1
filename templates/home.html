@@ -1,0 +1,58 @@
+<!-- Had AI change previous lab home.html to my data -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Country Facts</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .main-container {
+            margin-top: 80px;
+        }
+        .btn-custom {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- display a flash message here, if necessary -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} text-center">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="container main-container">
+        <div class="card p-4">
+            <h1 class="text-center mb-4">Store Management System</h1>
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="/all-countries" class="btn btn-success btn-custom">Countries</a>
+                </div>
+                <div class="col-md-6">
+                    <a href="/checkout-history" class="btn btn-info btn-custom">Checkout History</a>
+                </div>
+                <div class="col-md-6">
+                    <a href="/update-checkout" class="btn btn-warning btn-custom">Update Checkout</a>
+                </div>
+                <div class="col-md-6">
+                    <a href="/inventory" class="btn btn-dark btn-custom">Inventory</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
