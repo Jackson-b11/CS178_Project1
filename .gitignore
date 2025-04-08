@@ -1,2 +1,4 @@
-testing.py
+# Anything in here won't get pushed to git repo
+creds.py
 *.pem
+__pycahce__
