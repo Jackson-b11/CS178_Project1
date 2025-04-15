@@ -29,3 +29,8 @@ def show_country():
     query = "SELECT Name FROM country;"
     return execute_query(query)
 
+TABLE_NAME = "Users"
+
+dynamodb = boto3.resource('dynamodb', region_name="us-east-1")
+table = dynamodb.Table(TABLE_NAME)
+
