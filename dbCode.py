@@ -26,11 +26,9 @@ def execute_query(query,args=()):
 
 
 def show_country():
-    query = "SELECT Name FROM country;"
+    query = "SELECT name FROM country LIMIT 5;"
     return execute_query(query)
 
-TABLE_NAME = "Users"
 
-dynamodb = boto3.resource('dynamodb', region_name="us-east-1")
-table = dynamodb.Table(TABLE_NAME)
+
 

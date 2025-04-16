@@ -1,55 +1,46 @@
-<!-- Had AI change previous lab home.html to my data prompt "edit this to look nice"-->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Country Facts</title>
-    <!-- Bootstrap CSS -->
+    <meta charset="UTF-8">
+    <title>Country Query System</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-        .main-container {
-            margin-top: 80px;
-        }
-        .btn-custom {
-            width: 100%;
-            margin-bottom: 15px;
-        }
-        .card {
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-    </style>
 </head>
 <body>
-    <!-- display a flash message here, if necessary -->
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            {% for category, message in messages %}
-                <div class="alert alert-{{ category }} text-center">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Country Query System</h1>
 
-    <div class="container main-container">
-        <div class="card p-4">
-            <h1 class="text-center mb-4">Country Facts</h1>
-            <div class="row">
-                <div class="col-md-6">
-                    <a href="/all-countries" class="btn btn-success btn-custom">Show All Countries</a>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="row">
+            <!-- RDS Country Queries -->
+            <div class="col-md-6 mb-4">
+                <div class="card shadow rounded">
+                    <div class="card-header bg-info text-white">Country Data</div>
+                    <div class="card-body">
+                        <a href="/all-countries" class="btn btn-outline-info btn-block mb-2">View First 5 Countries</a>
+                        <a href="/query_country" class="btn btn-outline-primary btn-block">Query by Life Expectancy</a>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <a href="/query_country" class="btn btn-info btn-custom">Query Country</a>
-                </div>
-                <div class="col-md-6">
-                    <a href="/add-user" class="btn btn-warning btn-custom">Add User</a>
-                </div>
-                <div class="col-md-6">
-                    <a href="/update-user" class="btn btn-dark btn-custom">Update User</a>
+            </div>
+
+            <!-- DynamoDB User Functions -->
+            <div class="col-md-6 mb-4">
+                <div class="card shadow rounded">
+                    <div class="card-header bg-success text-white">Users</div>
+                    <div class="card-body">
+                        <a href="/compare-life" class="btn btn-outline-primary btn-block mt-2">Compare LifeExpectancy to Countries</a>
+                        <a href="/add-user" class="btn btn-outline-success btn-block mb-2">Add User</a>
+                        <a href="/get-user" class="btn btn-outline-dark btn-block mb-2">Get User by ID</a>
+                        <a href="/all-users" class="btn btn-outline-secondary btn-block mb-2">View All Users</a>
+                        <a href="/update-user" class="btn btn-outline-warning btn-block mb-2">Update Life Expectancy</a>
+                        <a href="/delete-user" class="btn btn-outline-danger btn-block">Delete User</a>
+                    </div>
                 </div>
             </div>
         </div>

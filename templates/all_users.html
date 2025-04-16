@@ -1,0 +1,11 @@
+<h2>All Users</h2>
+<table border="1">
+  <tr><th>ID</th><th>Name</th><th>Life Expectancy</th></tr>
+  {% for user in users %}
+    <tr>
+      <td>{{ user.ID }}</td>
+      <td>{{ user.Name }}</td>
+      <td>{{ user.LifeExpected }}</td>
+    </tr>
+  {% endfor %}
+</table>
