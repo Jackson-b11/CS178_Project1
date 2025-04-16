@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,20 +8,30 @@
 <body>
     <div class="container mt-5">
         <h2 class="mb-4">First 5 Countries</h2>
-        <table class="table table-bordered table-hover">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Country Name</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for row in results %}
+
+        {% if results %}
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
                     <tr>
-                        <td>{{ row.name }}</td>
+                        <th>Country Name</th>
+                        <th>Life Expectancy</th>
+                        <th>Language</th>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {% for row in results %}
+                        <tr>
+                            <td>{{ row.name }}</td>
+                            <td>{{ row.lifeexpectancy }}</td>
+                            <td>{{ row.language }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No countries found.</p>
+        {% endif %}
+
         <a href="/" class="btn btn-secondary mt-3">Back to Home</a>
     </div>
 </body>

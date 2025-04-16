@@ -26,8 +26,17 @@ def execute_query(query,args=()):
 
 
 def show_country():
-    query = "SELECT name FROM country LIMIT 5;"
+    query = """
+        SELECT country.name AS name, 
+               country.lifeexpectancy AS lifeexpectancy, 
+               countrylanguage.language AS language
+        FROM country
+        JOIN countrylanguage ON country.code = countrylanguage.countrycode
+        LIMIT 5;
+    """
     return execute_query(query)
+
+
 
 
 

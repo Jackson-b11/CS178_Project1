@@ -102,13 +102,26 @@ def compare_life():
 def query_country():
     if request.method == 'POST':
         min_lifeexpectancy = request.form.get('lifeexpectancy')
-        query = "SELECT name, lifeexpectancy FROM country WHERE lifeexpectancy >= %s"
+
+        query = """
+            SELECT country.name AS name,
+                   country.lifeexpectancy AS lifeexpectancy,
+                   countrylanguage.language AS language
+            FROM country
+            JOIN countrylanguage ON country.code = countrylanguage.countrycode
+            WHERE country.lifeexpectancy >= %s
+        """
         params = [min_lifeexpectancy]
         results = execute_query(query, params)
+
         if not results:
             flash("No countries match your criteria", "info")
+
         return render_template('query_country.html', results=results)
+    
     return render_template('query_country.html')
+
+
 
 @app.route('/all-countries')
 def all_countries():
