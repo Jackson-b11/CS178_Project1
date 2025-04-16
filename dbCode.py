@@ -3,6 +3,7 @@ import pymysql.cursors
 import creds
 import boto3
 
+# Establish connection with RDS provided
 def get_conn():
 
     return pymysql.connect(
@@ -13,6 +14,7 @@ def get_conn():
         cursorclass=pymysql.cursors.DictCursor
     )
 
+# Function that takes query and args and using get_conn function above returns the results of a query
 def execute_query(query,args=()):
 
     conn = get_conn()
@@ -24,7 +26,7 @@ def execute_query(query,args=()):
     finally:
         conn.close()
 
-
+# Function used in flaskappv1.py
 def show_country():
     query = """
         SELECT country.name AS name, 
