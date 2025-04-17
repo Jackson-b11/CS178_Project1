@@ -14,7 +14,7 @@ You will build a self-contained web application using Flask that connects to bot
 
 ## File Structure
 
-- `flaskapp.py`: Main Flask routes for the web app
+- `flaskappv1.py`: Main Flask routes for the web app
 - `dbCode.py`: Handles SQL connection and query execution
 - `templates/`: All HTML files used for rendering pages
   - `home.html`: Main navigation page
